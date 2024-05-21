@@ -1,0 +1,20 @@
+[versions]
+agp = "8.0.2"
+kotlin = "2.0.0"
+nexus-publish = "2.0.0-rc-1"
+android-minSdk = "24"
+android-compileSdk = "33"
+paging = "3.3.0"
+compose-multiplatform = "1.6.10"
+[libraries]
+kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
+nexus-publish = { module = "io.github.gradle-nexus.publish-plugin:io.github.gradle-nexus.publish-plugin.gradle.plugin", version.ref = "nexus-publish" }
+paging-common = { module = "androidx.paging:paging-common", version.ref = "paging" }
+
+[plugins]
+androidLibrary = { id = "com.android.library", version.ref = "agp" }
+kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+compose-gradlePlugin = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+jbCompose = { id = "org.jetbrains.compose", version.ref = "compose-multiplatform" }
+
+
