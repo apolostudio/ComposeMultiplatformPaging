@@ -43,4 +43,5 @@ jobs:
 
       - name: Publish To Maven Central
         run: |
+          chmod +x gradlew
           ./gradlew publishAndReleaseToMavenCentral --no-configuration-cache
