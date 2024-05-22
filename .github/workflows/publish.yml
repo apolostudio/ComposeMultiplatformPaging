@@ -46,6 +46,6 @@ jobs:
       - name: Publish To Maven Central
         run: |
           chmod +x gradlew
-          ./gradlew publishIosX64PublicationToMavenCentralRepository
-          ./gradlew publishIosSimulatorArm64PublicationToMavenCentralRepository
-          ./gradlew publishIosArm64PublicationToMavenCentralRepository
+          ./gradlew publishIosX64PublicationToMavenCentralRepository --no-configuration-cache
+          ./gradlew publishIosSimulatorArm64PublicationToMavenCentralRepository --no-configuration-cache
+          ./gradlew publishIosArm64PublicationToMavenCentralRepository --no-configuration-cache
