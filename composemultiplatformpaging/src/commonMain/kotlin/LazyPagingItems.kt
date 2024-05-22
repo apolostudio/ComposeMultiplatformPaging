@@ -70,14 +70,13 @@ public class LazyPagingItems<T : Any> internal constructor(
                     */
                 private val pagingDataPresenter = object : PagingDataPresenter<T>(
                                 mainContext = mainDispatcher,
-                                cachedPagingData =
-                                                if (flow is SharedFlow<PagingData<T>>) flow.replayCache.firstOrNull() else null
+                                cachedPagingData = if (flow is SharedFlow<PagingData<T>>) flow.replayCache.firstOrNull() else null
                 ) {
-                                override suspend fun presentPagingDataEvent(
-                                                event: PagingDataEvent<T>,
-                                ) {
-                                                updateItemSnapshotList()
-                                }
+                    override suspend fun presentPagingDataEvent(
+                        event: PagingDataEvent<T>,
+                        ) {
+                        updateItemSnapshotList()
+                    }
                 }
 
                 /**
@@ -87,9 +86,9 @@ public class LazyPagingItems<T : Any> internal constructor(
                     * Use [get] to achieve such behavior.
                     */
                 var itemSnapshotList by mutableStateOf(
-                                pagingDataPresenter.snapshot()
+                    pagingDataPresenter.snapshot()
                 )
-                                private set
+                    private set
 
                 /**
                     * The number of items which can be accessed.
@@ -97,7 +96,7 @@ public class LazyPagingItems<T : Any> internal constructor(
                 val itemCount: Int get() = itemSnapshotList.size
 
                 private fun updateItemSnapshotList() {
-                                itemSnapshotList = pagingDataPresenter.snapshot()
+                    itemSnapshotList = pagingDataPresenter.snapshot()
                 }
 
                 /**
@@ -107,8 +106,8 @@ public class LazyPagingItems<T : Any> internal constructor(
                     * @see peek
                     */
                 operator fun get(index: Int): T? {
-                                pagingDataPresenter[index] // this registers the value load
-                                return itemSnapshotList[index]
+                    pagingDataPresenter[index] // this registers the value load
+                    return itemSnapshotList[index]
                 }
 
                 /**
@@ -119,7 +118,7 @@ public class LazyPagingItems<T : Any> internal constructor(
                     * @return The presented item at position [index], `null` if it is a placeholder
                     */
                 fun peek(index: Int): T? {
-                                return itemSnapshotList[index]
+                    return itemSnapshotList[index]
                 }
 
                 /**
@@ -170,15 +169,15 @@ public class LazyPagingItems<T : Any> internal constructor(
                                 private set
 
                 internal suspend fun collectLoadState() {
-                                pagingDataPresenter.loadStateFlow.filterNotNull().collect {
-                                                loadState = it
-                                }
+                    pagingDataPresenter.loadStateFlow.filterNotNull().collect {
+                        loadState = it
+                    }
                 }
 
                 internal suspend fun collectPagingData() {
-                                flow.collectLatest {
-                                                pagingDataPresenter.collectFrom(it)
-                                }
+                    flow.collectLatest {
+                        pagingDataPresenter.collectFrom(it)
+                    }
                 }
 }
 
@@ -208,21 +207,21 @@ public fun <T : Any> Flow<PagingData<T>>.collectAsLazyPagingItems(
 
                 LaunchedEffect(lazyPagingItems) {
                                 if (context == EmptyCoroutineContext) {
-                                                lazyPagingItems.collectPagingData()
+                                    lazyPagingItems.collectPagingData()
                                 } else {
-                                                withContext(context) {
-                                                                lazyPagingItems.collectPagingData()
-                                                }
+                                    withContext(context) {
+                                        lazyPagingItems.collectPagingData()
+                                    }
                                 }
                 }
 
                 LaunchedEffect(lazyPagingItems) {
                                 if (context == EmptyCoroutineContext) {
-                                                lazyPagingItems.collectLoadState()
+                                    lazyPagingItems.collectLoadState()
                                 } else {
-                                                withContext(context) {
-                                                                lazyPagingItems.collectLoadState()
-                                                }
+                                    withContext(context) {
+                                        lazyPagingItems.collectLoadState()
+                                    }
                                 }
                 }
 
