@@ -6,7 +6,6 @@ plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.compose.gradlePlugin)
     alias(libs.plugins.jbCompose)
-   // id("module.publication")
     alias(libs.plugins.maven.publish)
 
 }
@@ -82,6 +81,9 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             api(libs.paging.common)
+
+            implementation(libs.kotlin.stdlib.common)
+            implementation(libs.kotlinCoroutinesCore)
             api(compose.runtime)
         }
         commonTest.dependencies {
@@ -101,3 +103,4 @@ android {
         targetCompatibility = JavaVersion.VERSION_1_8
     }
 }
+
