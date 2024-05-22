@@ -6,7 +6,7 @@ plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.compose.gradlePlugin)
     alias(libs.plugins.jbCompose)
-    id("module.publication")
+   // id("module.publication")
     alias(libs.plugins.maven.publish)
 
 }

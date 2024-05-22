@@ -3,8 +3,8 @@ plugins {
 }
 
 allprojects {
-    group = "org.jetbrains.kotlinx.multiplatform-library-template"
-    version = "0.0.1"
+    group = "io.github.apolostudio.composemultiplatformpaging"
+    version = "0.0.0"
 }
 
 nexusPublishing {
