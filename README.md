@@ -1,4 +1,4 @@
-[ ![Download](https://maven-badges.herokuapp.com/maven-central/io.github.apolostudio/composemultiplatformpaging/badge.svg) ](https://maven-badges.herokuapp.com/maven-central/io.github.apolostudio/composemultiplatformpaging)
+[ ![Download](https://img.shields.io/maven-central/v/io.github.apolostudio/composemultiplatformpaging) ](https://maven-badges.herokuapp.com/maven-central/io.github.apolostudio/composemultiplatformpaging)
 [ ![Download](https://img.shields.io/github/v/release/apolostudio/ComposeMultiplatformPaging?color=orange&include_prereleases&label=latest%20build) ](https://maven-badges.herokuapp.com/maven-central/io.github.apolostudio/composemultiplatformpaging)
 ## Multiplatform Paging Compose
 It adds collectAsLazyPagingItems from common code in Compose Multiplatform
