@@ -25,22 +25,21 @@ internal actual fun getPagingPlaceholderKey(index: Int): Any = PagingPlaceholder
 @SuppressLint("BanParcelableUsage")
 private data class PagingPlaceholderKey(private val index: Int) : Parcelable {
             override fun writeToParcel(parcel: Parcel, flags: Int) {
-                            parcel.writeInt(index)
+                parcel.writeInt(index)
             }
 
             override fun describeContents(): Int {
-                            return 0
+                return 0
             }
 
             companion object {
-                            @Suppress("unused")
-                            @JvmField
-                            val CREATOR: Parcelable.Creator<PagingPlaceholderKey> =
-                                            object : Parcelable.Creator<PagingPlaceholderKey> {
-                                                            override fun createFromParcel(parcel: Parcel) =
-                                                                            PagingPlaceholderKey(parcel.readInt())
+                @Suppress("unused")
+                @JvmField
+                val CREATOR: Parcelable.Creator<PagingPlaceholderKey> =
+                    object : Parcelable.Creator<PagingPlaceholderKey> {
+                        override fun createFromParcel(parcel: Parcel) = PagingPlaceholderKey(parcel.readInt())
 
-                                                            override fun newArray(size: Int) = arrayOfNulls<PagingPlaceholderKey?>(size)
-                                            }
+                        override fun newArray(size: Int) = arrayOfNulls<PagingPlaceholderKey?>(size)
+                    }
             }
 }
