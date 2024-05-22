@@ -1,4 +1,4 @@
-name: Publish Artifacts
+name: Publish and Release All Targets
 on:
   workflow_dispatch:
 jobs:
@@ -46,6 +46,4 @@ jobs:
       - name: Publish To Maven Central
         run: |
           chmod +x gradlew
-          ./gradlew publishIosX64PublicationToMavenCentralRepository --no-configuration-cache
-          ./gradlew publishIosSimulatorArm64PublicationToMavenCentralRepository --no-configuration-cache
-          ./gradlew publishIosArm64PublicationToMavenCentralRepository --no-configuration-cache
+          ./gradlew publishAndReleaseToMavenCentral --no-configuration-cache
